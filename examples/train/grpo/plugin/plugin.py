@@ -393,7 +393,7 @@ class SGG_Rewards(ORM):
                 pass  # Continue to next verification method if this fails
                 
             rewards.append(reward)
-            # return recall + mean_recall
+
         return rewards
 
 
@@ -417,14 +417,13 @@ class GSR_Rewards(ORM):
         self.past_verb_cache = {}
 
 
-    # TO DO
+
     def postprocess_text(self, text_list, synonyms):
         if isinstance(text_list, str):
             text_list = [text_list]
 
         synonyms_text_list = []
         for text in text_list:
-            # the sky --> ['the', 'sky']
             text_nlp_list = self.nlp(text)
             for text_nlp in text_nlp_list:
                 text = text_nlp.lemma_
@@ -481,7 +480,6 @@ class GSR_Rewards(ORM):
 
 
     def extract_roles(self, caption):
-        # 提取角色的原有逻辑（同之前代码）
         roles = []
         pattern = r"<(\w+)>(.*?)</\1><box>\[(.*?)\]</box>"
         # matches = re.findall(pattern, caption)
@@ -513,11 +511,9 @@ class GSR_Rewards(ORM):
             clean_item = re.sub(r'<.*?>', '', item)
             if item.startswith('<box>'):
                 clean_caption = clean_caption.replace(item, '')
-        # spaCy语法分析
             else:
                 clean_caption = clean_caption.replace(item, clean_item)
 
-        # 提取结构化信息
         return {        
             "original_frame": caption,
             "clean_frame": clean_caption,
@@ -975,7 +971,7 @@ class GSR_CoT_Rewards(ORM):
                             for cot_bbox in cot_bboxes:
                                 if self.iou(gt_bbox, cot_bbox) > 0.5:
                                     box_match = True
-                                    break  # 发现一个匹配即可退出
+                                    break  
                             box_match_list.append(box_match)          
                         
                     
@@ -1196,14 +1192,14 @@ class SGG_CoT_Rewards(ORM):
                         for cot_bbox in cot_bboxes:
                             if self.iou(gold_subj_bbox, cot_bbox) > 0.5:
                                 box_match = True
-                                break  # 发现一个匹配即可退出
+                                break  
                         box_match_list.append(box_match)    
 
                         box_match = False
                         for cot_bbox in cot_bboxes:
                             if self.iou(gold_obj_bbox, cot_bbox) > 0.5:
                                 box_match = True
-                                break  # 发现一个匹配即可退出
+                                break  
                         box_match_list.append(box_match)  
 
                         # Judge Relations
