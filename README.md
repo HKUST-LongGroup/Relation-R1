@@ -65,6 +65,13 @@ bash useful_sh/eval/sgg_eval.sh
 - [ ] Release Relation-R1 checkpoint
 
 
+## Acknowledgement
+
+We thank:
+- [ms-swift](https://github.com/modelscope/ms-swift)
+- [ASv2](https://github.com/OpenGVLab/all-seeing)
+for their awesome open-source codes and models.
+
 ## 🖊️ BibTeX
 If you find this project useful in your research, please consider cite:
 
