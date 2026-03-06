@@ -10,8 +10,7 @@ To install from source:
 ```shell
 # pip install git+https://github.com/modelscope/ms-swift.git
 
-git clone https://github.com/modelscope/ms-swift.git #3.3 version
-cd ms-swift
+git clone git@github.com:HKUST-LongGroup/Relation-R1.git #3.3 version
 pip install -e .
 ```
 
